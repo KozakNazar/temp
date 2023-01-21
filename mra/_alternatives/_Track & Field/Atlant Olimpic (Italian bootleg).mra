@@ -1,0 +1,76 @@
+<!--          FPGA arcade hardware by Jotego
+
+              This core is available for hardware compatible with MiST and MiSTer
+              Other FPGA systems may be supported by the time you read this.
+              This work is not mantained by the MiSTer project. Please contact the
+              core author for issues and updates.
+
+              (c) Jose Tejada, 2023. Please support this research
+              Patreon: https://patreon.com/jotego
+
+              The author does not endorse or participate in illegal distribution
+              of copyrighted material. This work can be used with compatible
+              software. This software can be homebrew projects or legally
+              obtained memory dumps of compatible games.
+
+              This file license is GNU GPLv2.
+              You can read the whole license file in
+              https://opensource.org/licenses/gpl-2.0.php
+
+-->
+
+<misterromdescription>
+    <about author="jotego" webpage="https://patreon.com/jotego" source="https://github.com/jotego" twitter="@topapate"/>
+    <name>Atlant Olimpic (Italian bootleg)</name>
+    <setname>atlantol</setname>
+    <rbf>jttrack</rbf>
+    <mameversion>0248</mameversion>
+    <year>1996</year>
+    <manufacturer>bootleg</manufacturer>
+    <players>4</players>
+    <joystick>2</joystick>
+    <rotation>horizontal</rotation>
+    <region>World</region>
+    <mraauthor>jotego</mraauthor>
+    <rom index="0" zip="atlantol.zip|trackfld.zip" md5="None">
+        <!-- maincpu - starts at 0x0 - length 0x20000 (17 bits) -->
+        <part name="atl37" crc="aca8da51"/>
+        <!-- OBJ_START -->
+        <!-- audiocpu - starts at 0x20000 - length 0x20000 (17 bits) -->
+        <part name="atl35" crc="03331597"/>
+        <!-- gfx2 - starts at 0x40000 - length 0x20000 (17 bits) -->
+        <interleave output="16">
+            <part name="atl40" crc="c915f53a" map="12"/>
+        </interleave>
+        <!-- gfx1 - starts at 0x60000 - length 0x40000 (18 bits) -->
+        <interleave output="16">
+            <part name="atl38" crc="dbbcbcda" map="01"/>
+            <part name="atl39" crc="d08f067f" map="10"/>
+        </interleave>
+        <!-- proms - starts at 0xA0000 - length 0x220 (10 bits) -->
+        <part name="361b16.f1" crc="d55f30b5"/>
+        <part name="361b17.b16" crc="d2ba4d32"/>
+        <part name="361b18.e15" crc="053e5861"/>
+        <!-- adpcm - starts at 0xA0220 - length 0x20000 (17 bits) -->
+        <part name="atl36" crc="0bae8489"/>
+        <!-- Total 0xC0220 bytes - 768 kBytes -->
+    </rom>
+    <nvram index="2" size="2048"/>
+    <rom index="1">
+        <part>00</part>
+    </rom>
+    <switches page_id="1" page_name="Switches" base="16" default="ff,5f">
+        <!-- DSW1 -->
+        <dip name="Coin A" bits="0,3" ids="Free Play,4/3,4/1,3/4,3/2,3/1,2/5,2/3,2/1,1/7,1/6,1/5,1/4,1/3,1/2,1/1"/>
+        <dip name="Coin B" bits="4,7" ids="No B,4/3,4/1,3/4,3/2,3/1,2/5,2/3,2/1,1/7,1/6,1/5,1/4,1/3,1/2,1/1"/>
+        <!-- DSW2 -->
+        <dip name="Lives" bits="8" ids="2,1"/>
+        <dip name="Allow Continue" bits="9" ids="No,Yes"/>
+        <dip name="Language" bits="10" ids="English,Italian"/>
+        <dip name="Bonus Life" bits="11" ids="10k0,None"/>
+        <dip name="Records" bits="12" ids="Erase on Reset,Don&apos;t Erase"/>
+        <dip name="Difficulty" bits="13,14" ids="Difficult,Hard,Normal,Easy"/>
+        <dip name="Demo Sounds" bits="15" ids="On,Off"/>
+    </switches>
+    <buttons names="Left, Centre, Right,Start,Coin,Core credits" default="Y,X,B,Start,Select,-" count="3"/>
+</misterromdescription>

@@ -1,0 +1,103 @@
+<!--          FPGA arcade hardware by Jotego
+
+              This core is available for hardware compatible with MiST and MiSTer
+              Other FPGA systems may be supported by the time you read this.
+              This work is not mantained by the MiSTer project. Please contact the
+              core author for issues and updates.
+
+              (c) Jose Tejada, 2023. Please support this research
+              Patreon: https://patreon.com/jotego
+
+              The author does not endorse or participate in illegal distribution
+              of copyrighted material. This work can be used with compatible
+              software. This software can be homebrew projects or legally
+              obtained memory dumps of compatible games.
+
+              This file license is GNU GPLv2.
+              You can read the whole license file in
+              https://opensource.org/licenses/gpl-2.0.php
+
+-->
+
+<misterromdescription>
+    <about author="jotego" webpage="https://patreon.com/jotego" source="https://github.com/jotego" twitter="@topapate"/>
+    <name>Hyper Sports (bootleg)</name>
+    <setname>hypersptb</setname>
+    <rbf>jtroadf</rbf>
+    <mameversion>0248</mameversion>
+    <year>1984</year>
+    <manufacturer>bootleg</manufacturer>
+    <players>4</players>
+    <joystick/>
+    <rotation>horizontal</rotation>
+    <region>World</region>
+    <mraauthor>jotego</mraauthor>
+    <rom index="0" zip="hypersptb.zip|hyperspt.zip" md5="None">
+        <!-- maincpu - starts at 0x0 - length 0x10000 (16 bits) -->
+        <part repeat="0x4000"> FF</part>
+        <part name="1.5g" crc="0cfc68a7"/>
+        <part name="2.7g" crc="560258e0"/>
+        <part name="3.8g" crc="9b01c7e6"/>
+        <part name="4.11g" crc="4ed32240"/>
+        <part name="5.13g" crc="b105a8cd"/>
+        <part name="6.15g" crc="1a34a849"/>
+        <!-- SND_START -->
+        <!-- audiocpu - starts at 0x10000 - length 0x4000 (14 bits) -->
+        <part name="12.17a" crc="3dc1a6ff"/>
+        <part name="11.15a" crc="9b525c3e"/>
+        <!-- SCR_START -->
+        <!-- gfx2 - starts at 0x14000 - length 0xE000 (16 bits) -->
+        <interleave output="16">
+            <part name="b.14a" crc="8fd90bd2" map="01"/>
+            <part name="d.14c" crc="ed9271a0" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="a.12a" crc="a3d422c6" map="01"/>
+            <part name="c.12c" crc="0c8ed053" map="10"/>
+        </interleave>
+        <!-- gfx1 - starts at 0x22000 - length 0x16000 (17 bits) -->
+        <interleave output="16">
+            <part name="20.15g" crc="551d222f" map="01"/>
+            <part name="16.19j" crc="c72d63be" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="15.18j" crc="76565608" map="01"/>
+            <part name="14.17j" crc="74d2cc69" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="13.15j" crc="66cbcb4d" map="01"/>
+            <part name="17.19g" crc="ed25e669" map="10"/>
+        </interleave>
+        <interleave output="16">
+            <part name="18.18g" crc="b145b39f" map="01"/>
+            <part name="19.17g" crc="d7ff9f2b" map="10"/>
+        </interleave>
+        <!-- proms - starts at 0x38000 - length 0x220 (10 bits) -->
+        <part name="mmi6331-1.3c" crc="bc8a5956"/>
+        <part name="j12_c28.bin" crc="2c891d59"/>
+        <part name="a09_c29.bin" crc="811a3f3f"/>
+        <!-- adpcm - starts at 0x38220 - length 0x10000 (16 bits) -->
+        <part repeat="0x8000"> FF</part>
+        <part name="10.20c" crc="a4cddeb8"/>
+        <part name="9.20cd" crc="e9919365"/>
+        <part name="8.20d" crc="49a06454"/>
+        <part name="7.20b" crc="607a36df"/>
+        <!-- Total 0x48220 bytes - 288 kBytes -->
+    </rom>
+    <nvram index="2" size="2048"/>
+    <rom index="1">
+        <part>00</part>
+    </rom>
+    <switches page_id="1" page_name="Switches" base="16" default="ff,49,ff">
+        <!-- DSW1 -->
+        <dip name="Coin A" bits="0,3" ids="Free Play,4/3,4/1,3/4,3/2,3/1,2/5,2/3,2/1,1/7,1/6,1/5,1/4,1/3,1/2,1/1"/>
+        <dip name="Coin B" bits="4,7" ids="No B,4/3,4/1,3/4,3/2,3/1,2/5,2/3,2/1,1/7,1/6,1/5,1/4,1/3,1/2,1/1"/>
+        <!-- DSW2 -->
+        <dip name="After ending" bits="8" ids="Game Continues,Game Over"/>
+        <dip name="Cabinet" bits="9" ids="Upright,Cocktail"/>
+        <dip name="Demo Sounds" bits="10" ids="On,Off"/>
+        <dip name="Records" bits="11" ids="Erase on Reset,Don&apos;t Erase"/>
+        <dip name="Difficulty" bits="12,15" ids="Difficult 4,Difficult 3,Difficult 2,Difficult 1,Normal 8,Normal 7,Normal 6,Normal 5,Normal 4,Normal 3,Normal 2,Normal 1,Easy 4,Easy 3,Easy 2,Easy 1"/>
+    </switches>
+    <buttons names="Left button, Centre button, Right button,Start,Coin,Core credits" default="Y,X,B,Start,Select,-" count="3"/>
+</misterromdescription>
